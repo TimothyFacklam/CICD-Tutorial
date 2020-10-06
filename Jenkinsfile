@@ -2,13 +2,11 @@
 pipeline {
     agent any
     stages {
-      stage(‘Build’) {
+      stage(‘Build & Test’) {
         steps {
           sh '/usr/local/bin/docker-compose -f "docker-compose.yml" up -d --build'
-        }
-      }
-        stage('Test'){
           sh '/usr/local/bin/docker-compose -f "docker-compose-tests.yml" up -d --build'
         }
+      }
     }
 }
